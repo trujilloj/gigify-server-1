@@ -15,8 +15,8 @@ router.get("/", (request, response, next) => {
         .catch(next);
 });
 
-router.get("/:id", (request, response, next) => {
-    queries.read(request.params.id)
+router.get("/:date", (request, response, next) => {
+    queries.read(request.params.date)
         .then(event => {
             event
                 ?
@@ -40,8 +40,8 @@ router.post("/", (request, response, next) => {
         .catch(next);
 });
 
-router.delete("/:id", (request, response, next) => {
-    queries.delete(request.params.id)
+router.delete("/:date", (request, response, next) => {
+    queries.delete(request.params.date)
         .then(() => {
             response.status(204).json({
                 deleted: true
@@ -50,8 +50,8 @@ router.delete("/:id", (request, response, next) => {
         .catch(next);
 });
 
-router.put("/:id", (request, response, next) => {
-    queries.upid(request.params.id, request.body)
+router.put("/:date", (request, response, next) => {
+    queries.update(request.params.date, request.body)
         .then(event => {
             response.json({
                 event

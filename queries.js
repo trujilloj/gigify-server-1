@@ -4,20 +4,20 @@ module.exports = {
     list() {
         return database('event');
     },
-    read(id) {
-        return database('event').where('id', id).first();
+    read(date) {
+        return database('event').where('date', date).first();
 
     },
     create(event) {
         return database('event').insert(event, '*').then(record => record[0]);
 
     },
-    upid(id, event) {
-        return database('event').where('id', id).upid(event, '*');
+    update(date, event) {
+        return database('event').where('date', date).update(event, '*');
 
     },
-    delete(id) {
-        return database('event').where('id', id).del();
+    delete(date) {
+        return database('event').where('date', date).del();
 
     }
 };
